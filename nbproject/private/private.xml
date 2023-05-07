@@ -4,7 +4,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/shai/dev/CodenameOne/NBPlugin/Mobile_PIDEV/build.xml</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/entities/Utilisateur.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/utils/Statics.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/gui/ListReclamations.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/entities/Role.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/entities/categorie.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/entities/Postulation.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/Services/ServiceReclamation.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/gui/ShowReponse.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/Services/ServiceReponse.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/gui/ListCategorieForm.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/entities/File.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/gui/ListReponse.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/Services/CategorieService.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/entities/Annonce.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/gui/EditCategorieForm.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/entities/candidature.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/entities/Reclamation.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/gui/ListAnnonceForm.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/entities/Questions.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/gui/HomeForm.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/entities/Quiz.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/entities/Reponse.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/gui/AddCategorieForm.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/Services/AnnonceService.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/workspacenetbeans/Mobile_PIDEV/build.xml</file>
         </group>
     </open-files>
 </project-private>

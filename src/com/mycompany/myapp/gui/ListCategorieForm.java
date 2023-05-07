@@ -7,6 +7,7 @@ package com.mycompany.myapp.gui;
 
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BorderLayout;
@@ -24,7 +25,7 @@ public class ListCategorieForm extends Form {
     
     private ArrayList<categorie> categories;
 
-    public ListCategorieForm() {
+    public ListCategorieForm (Form previous) {
     super("Categories List");
         
         // Get all the velos from the server
@@ -44,15 +45,15 @@ public class ListCategorieForm extends Form {
             Label nomLabel = new Label("Nom Categorie: " + categories.getNom_categorie());
             nomLabel.setUIID("CategorieLabel");
            
-            Button reserveBtn = new Button("Add");
-            reserveBtn.addActionListener(e -> {
-//                CategorieService.getInstance().addVelo(categories);
-//          
-            });
-            Button editBtn = new Button("Edit");
-            editBtn.addActionListener(e -> {
-                //new EditCategorieForm(categories).show();
-            });
+//            Button reserveBtn = new Button("Add");
+//            reserveBtn.addActionListener(e -> {
+////                CategorieService.getInstance().addVelo(categories);
+////          
+//            });
+//            Button editBtn = new Button("Edit");
+//            editBtn.addActionListener(e -> {
+//                //new EditCategorieForm(categories).show();
+//            });
             Button deleteBtn = new Button("Delete");
             deleteBtn.addActionListener(e -> {
                 // Delete the velo from the server
@@ -72,7 +73,7 @@ public class ListCategorieForm extends Form {
             // Create a container to hold the buttons
             Container buttonsContainer = new Container(new GridLayout(3, 1));
             buttonsContainer.setUIID("categorieButtonBox");
-            buttonsContainer.add(reserveBtn);
+          //  buttonsContainer.add(reserveBtn);
 //            buttonsContainer.add(editBtn);
             buttonsContainer.add(deleteBtn);
             
@@ -98,6 +99,9 @@ public class ListCategorieForm extends Form {
         
         add(addBtn);
         add(editBtn);
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
+
+   
     
 }

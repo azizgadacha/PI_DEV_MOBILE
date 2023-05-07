@@ -135,9 +135,9 @@ public class CategorieService {
     public void deleteVelo(int id_categorie) {
 
         Dialog d = new Dialog();
-        if (d.show("Delete Velo", "Do you really want to remove this Categorie", "Yes", "No")) {
+        if (d.show("Delete categorie", "Do you really want to remove this Categorie", "Yes", "No")) {
 
-            req.setUrl(Statics.BASE_URL + "/categorie/delete_json? id_categorie=" + id_categorie);
+            req.setUrl(Statics.BASE_URL + "/categorie/delete_json/id_categorie" + id_categorie);
 
             NetworkManager.getInstance().addToQueueAndWait(req);
         d.dispose();

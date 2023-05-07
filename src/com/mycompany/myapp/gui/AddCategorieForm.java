@@ -20,7 +20,7 @@ import com.mycompany.myapp.entities.categorie;
  */
 public class AddCategorieForm extends Form {
       
-public AddCategorieForm() {
+public AddCategorieForm () {
         super("Add categorie");
         
   
@@ -64,6 +64,10 @@ public AddCategorieForm() {
      
   
         add(addBtn);
+    }
+
+    AddCategorieForm(HomeForm aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
