@@ -41,7 +41,7 @@ public class HomeForm extends Form {
       getToolbar().addCommandToLeftSideMenu("List Of Responses", null, e->  new ListReponse(this).show());   
     //  getToolbar().addCommandToLeftSideMenu("Reply", null, e-> new AddReponseForm(this).show());
     getToolbar().addCommandToLeftSideMenu("list categories", null, e-> new ListCategorieForm(this).show());
-        getToolbar().addCommandToLeftSideMenu("Add categories", null, e-> new AddCategorieForm(this).show());
+        getToolbar().addCommandToLeftSideMenu("Add categories", null, e-> new AddCategorieForm().show());
  
     }
 }

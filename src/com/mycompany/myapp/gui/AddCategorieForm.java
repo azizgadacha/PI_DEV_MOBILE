@@ -7,6 +7,7 @@ package com.mycompany.myapp.gui;
 
 import com.codename1.ui.Button;
 import com.codename1.ui.Dialog;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
@@ -64,10 +65,9 @@ public AddCategorieForm () {
      
   
         add(addBtn);
+       // getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
 
-    AddCategorieForm(HomeForm aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
     
 }
