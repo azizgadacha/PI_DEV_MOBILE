@@ -41,7 +41,7 @@ public class AjoutQuestionForm extends Form {
         current = this ;
         setToolbar(tb);
         Container cn = new Container(BoxLayout.y());
-        setTitle("Ajout Reclamation");
+        setTitle("Ajout Question");
         getContentPane().setScrollVisible(false);
         Tabs swipe = new Tabs();
         

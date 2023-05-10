@@ -33,44 +33,44 @@ public class ModifierQuestionForm extends BaseForm {
         getContentPane().setScrollVisible(false);
         
         
-        //super.addSideMenu(res);
-        
-        TextField title = new TextField(r.getTitle() , "title" , 20 , TextField.ANY);
-        TextField description = new TextField(r.getDescription() , "Description" , 20 , TextField.ANY);
-        //TextField etat = new TextField(String.valueOf(r.getEtat()) , "Etat" , 20 , TextField.ANY);
- 
-        title.setUIID("NewsTopLine");
-        description.setUIID("NewsTopLine");
-       // etat.setUIID("NewsTopLine");
-        
-        title.setSingleLineTextArea(true);
-        description.setSingleLineTextArea(true);
-       // etat.setSingleLineTextArea(true);
        
-       // Créez un objet ComboBox vide
-//ComboBox Typereclamation = new ComboBox<>();
-                    
-// Récupérez la liste des types de réclamations en appelant votre méthode affichageTypes()
-//ArrayList<Typereclamation> types = ServiceQuestion.getInstance().affichageTypes();
-// for (Typereclamation t : types) {
- //   Typereclamation.addItem(t.getTypereclamation());
-//}     
-// Ajoutez l'objet ComboBox à mon formulaire
-//addStringValue("Type de réclamation", Typereclamation);
         
+        TextField question = new TextField(r.getQuestion() , "question" , 20 , TextField.ANY);
+        TextField propositiona = new TextField(r.getPropositiona() , "propositiona" , 20 , TextField.ANY);
+        TextField propositionb = new TextField(r.getPropositionb() , "propositionb" , 20 , TextField.ANY);
+        TextField propositionc = new TextField(r.getPropositionc() , "propositionc" , 20 , TextField.ANY);
+        TextField idBonnereponse = new TextField(r.getIdBonnereponse() , "idBonnereponse" , 20 , TextField.ANY);
+
+        
+        
+        
+        question.setUIID("NewsTopLine");
+        propositiona.setUIID("NewsTopLine");
+        propositionb.setUIID("NewsTopLine");
+        propositionc.setUIID("NewsTopLine");
+        idBonnereponse.setUIID("NewsTopLine");
+        
+        
+       
+        
+        question.setSingleLineTextArea(true);
+        //description.setSingleLineTextArea(true);
+       
+               
         Button btnModifier = new Button("Modifier");
-       btnModifier.setUIID("Button");
+        btnModifier.setUIID("Button");
        
        //Event onclick btnModifer
        
         btnModifier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if ((title.getText().length() == 0) || (description.getText().length() == 0)) {
+                if ((question.getText().length() == 0) || (propositiona.getText().length() == 0) || (propositionb.getText().length() == 0) || (propositionc.getText().length() == 0) || (idBonnereponse.getText().length() == 0)) {
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 } else {
                     try {
-                        Question Questionupdated = new Question(r.getQuestion(),title.getText(), description.getText(),r.getDateCreation(),r.getEtat(),r.getDateTreatment(),r.getNote(),null, null);
+                        Question Questionupdated = new Question(question.getText(), propositiona.getText(), propositionb.getText(), propositionc.getText(), idBonnereponse.getText());
+
                         if (ServiceQuestion.getInstance().modifierQuestion(Questionupdated)) {
                             Dialog.show("Success", "Connection accepted", new Command("OK"));
                             //new ModifierQuestionForm(ListeQuestionsForm(res),reclamationupdated).show();
@@ -98,9 +98,15 @@ public class ModifierQuestionForm extends BaseForm {
         Container content;
           content = BoxLayout.encloseY(
                   l1, l2,
-                  new FloatingHint(title),
+                  new FloatingHint(question),
                   createLineSeparator(),
-                  new FloatingHint(description),
+                  new FloatingHint(propositiona),
+                  createLineSeparator(),
+                  new FloatingHint(propositionb),
+                  createLineSeparator(),
+                  new FloatingHint(propositionc),
+                  createLineSeparator(),
+                  new FloatingHint(idBonnereponse),
                   createLineSeparator(),
                 
                   btnModifier

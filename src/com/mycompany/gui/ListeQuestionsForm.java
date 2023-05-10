@@ -252,10 +252,6 @@ import com.codename1.ui.layouts.GridLayout;
                 }
            
         });
-        
-
-     
-        
           cnt.add(BorderLayout.CENTER,BoxLayout.encloseY(
                 
                 BoxLayout.encloseX(QuestionTxt),
