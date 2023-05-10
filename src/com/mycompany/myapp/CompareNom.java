@@ -1,4 +1,4 @@
-package logo;
+package com.mycompany.myapp;
 
 
 import java.util.Comparator;

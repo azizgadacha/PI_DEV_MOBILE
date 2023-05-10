@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logo;
+package com.mycompany.myapp;
 
 import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
@@ -54,9 +54,9 @@ heure.addItem(""+i);
     ComboBox min=new ComboBox();
 for(int i =1;i<=59;i++)
 min.addItem(""+i);
+        cntainerHeure.add(heure );
 
 cntainerHeure.add(min);
-        cntainerHeure.add(heure );
 
     
 

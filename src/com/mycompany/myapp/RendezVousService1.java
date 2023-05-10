@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package logo;
+package com.mycompany.myapp;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -146,9 +146,15 @@ u.setDate_rendez_vous(date);
         return resultOK;
     }
     
-    public boolean editVelo(candidature u) {
-
-        String url = "http://localhost:8000/candidature/mobile/5";
+    public boolean editVelo(rendez_vous u) {
+SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        System.out.println("");
+        
+        // Convert the date to a string using the SimpleDateFormat object
+        String dateString = dateFormat.format(u.getDate_rendez_vous());
+        String url = "http://localhost:8000/rendez/vous/mobile/edit/"+u.getId_rendez_vous()+"/"+u.getUser().getId()+"/"+u.getAnnonce().getId_annonce()+"/"+u.getHeure_rendez_vous()+"/"+dateString;
+        System.out.println(url);
+            
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         NetworkManager.getInstance().addToQueueAndWait(req);
         System.out.println(url);

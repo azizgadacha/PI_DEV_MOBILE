@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package logo;
+package com.mycompany.myapp;
 
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.components.SpanLabel;
@@ -20,6 +20,7 @@ import com.codename1.ui.Image;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.Label;
 import com.codename1.ui.List;
+import com.codename1.ui.Toolbar;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
@@ -44,6 +45,7 @@ public class CandidatureListForm extends Form {
     public void remplir(Container CandidatureContainer,ArrayList<Container> containerListeListe){
         
         for (candidature user : candidatures) {
+            System.out.println("rani   n3awid  n3abi");
             // Create a container to hold the velo's information and buttons
             Container CandidatureRow = new Container(new BorderLayout());
             
@@ -111,6 +113,8 @@ public class CandidatureListForm extends Form {
             
             containerListeListe.add(CandidatureRow);
             CandidatureContainer.add(CandidatureRow);
+            CandidatureContainer.revalidate();
+CandidatureContainer.repaint();
         }
         
     }
@@ -140,7 +144,8 @@ public class CandidatureListForm extends Form {
                 System.out.println( containerListeListe.size());
                 for (int j=0;j<containerListeListe.size();j++){
 CandidatureContainer.removeComponent(containerListeListe.get(j));
-                
+                CandidatureContainer.revalidate();
+CandidatureContainer.repaint();
                 System.out.println("irani fasa5t  a" );}
                                 System.out.println("irani kamalt  a" );
 
@@ -177,6 +182,13 @@ add(HeadContainer);
       public void showNourrituresList(Resources theme) {
           this.theme=theme;
     CandidatureListForm form = new CandidatureListForm(theme);
+    Toolbar tb=form.getToolbar();
+  tb.addMaterialCommandToSideMenu("side bar", FontImage.MATERIAL_WEB, (ActionListener )->{
+                  new RendezVousListForm().show();
+
+  });
+  tb.addMaterialCommandToSideMenu("Settuing", FontImage.MATERIAL_SETTINGS, (ActionListener )->{ });
+         
     form.show();
     
 }

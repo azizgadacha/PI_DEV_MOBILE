@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package logo;
+package com.mycompany.myapp;
 
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.components.SpanLabel;
@@ -18,6 +18,7 @@ import com.codename1.ui.Image;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.Label;
 import com.codename1.ui.List;
+import com.codename1.ui.Toolbar;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
@@ -75,13 +76,16 @@ public class RendezVousListForm extends Form {
             
             Button editBtn = new Button("Edit");
             editBtn.addActionListener(e -> {
+                 RendezVouEdit form =  new RendezVouEdit(user) ;
+        form.EditRendezVous(user);
             // new EditVeloForm(user).show();
             });
             Button deleteBtn = new Button("Refuser");
             deleteBtn.addActionListener(e -> {
               RendezVousService1.getInstance().deleteVelo(user.getId_rendez_vous());
               CandidatureContainer.removeComponent(CandidatureRow);
-               
+               CandidatureContainer.revalidate();
+CandidatureContainer.repaint();
 // RendezVousListForm form1 =  new RendezVousListForm() ;        
                 //form1.showNourrituresList();
                 //Remove the velo from the container
@@ -105,10 +109,14 @@ public class RendezVousListForm extends Form {
             
             // Add the velo row to the container
             CandidatureContainer.add(CandidatureRow);
+             CandidatureContainer.revalidate();
+CandidatureContainer.repaint();
         }
         
         // Add the container to the form
         add(CandidatureContainer);
+         CandidatureContainer.revalidate();
+CandidatureContainer.repaint();
         
         // Add a button to add a new velo
         //addBtn.addActionListener(e -> {
@@ -121,7 +129,16 @@ public class RendezVousListForm extends Form {
        // add(avisBtn);
     }
       public void showNourrituresList() {
+                  Toolbar.setGlobalToolbar(true);
+
     RendezVousListForm form = new RendezVousListForm();
+    Toolbar tb=form.getToolbar();
+  tb.addMaterialCommandToSideMenu("side bar", FontImage.MATERIAL_WEB, (ActionListener )->{
+                  new RendezVousListForm().show();
+
+  });
+  tb.addMaterialCommandToSideMenu("Settuing", FontImage.MATERIAL_SETTINGS, (ActionListener )->{ });
+      
     form.show();
     
 }
