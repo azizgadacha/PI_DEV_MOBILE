@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Avis" cloudDestinationProperty="Avis" layout="BoxLayout" boxLayoutAxis="Y" >
+  <component type="Container" name="Container" cloudDestinationProperty="Container" >
+    <component type="Label" name="Label" cloudDestinationProperty="Label" text="etes vous satisfait ?" >
+    </component>
+    <component type="RadioButton" name="RadioButton1" cloudDestinationProperty="RadioButton1" text="non " >
+    </component>
+    <component type="RadioButton" name="RadioButton" cloudDestinationProperty="RadioButton" text="oui" >
+    </component>
+  </component>
+  <component type="Label" name="Label1" cloudDestinationProperty="Label1" text="Note" >
+  </component>
+  <component type="RadioButton" name="RadioButton2" cloudDestinationProperty="RadioButton2" text="1" >
+  </component>
+  <component type="RadioButton" name="RadioButton3" cloudDestinationProperty="RadioButton3" text="2" >
+  </component>
+  <component type="RadioButton" name="RadioButton4" cloudDestinationProperty="RadioButton4" text="3" >
+  </component>
+  <component type="RadioButton" name="RadioButton5" cloudDestinationProperty="RadioButton5" text="4" >
+  </component>
+  <component type="RadioButton" name="RadioButton6" cloudDestinationProperty="RadioButton6" text="5" >
+  </component>
+  <component type="Button" name="Button" cloudDestinationProperty="Button" text="save" >
+  </component>
+</component>
