@@ -43,8 +43,12 @@ public class ListAnnonceForm extends Form {
 //            annonceRow.setUIID("AnnonceBox");
 //            
 //       
-//            Label nomLabel = new Label("Titre: " + annonce.getNom_categorie());
-//            nomLabel.setUIID("CategorieLabel");
+//            Label nomLabel = new Label("Titre: " + annonce.getTitre());
+//            nomLabel.setUIID("AnnonceLabel");
+//            Label nomLabel = new Label("Titre: " + annonce.getTitre());
+//            nomLabel.setUIID("AnnonceLabel");
+//            Label nomLabel = new Label("Titre: " + annonce.getTitre());
+//            nomLabel.setUIID("AnnonceLabel");
 //           
 ////            Button reserveBtn = new Button("Add");
 ////            reserveBtn.addActionListener(e -> {
@@ -58,10 +62,10 @@ public class ListAnnonceForm extends Form {
 //            Button deleteBtn = new Button("Delete");
 //            deleteBtn.addActionListener(e -> {
 //                // Delete the velo from the server
-//                AnnonceService.getInstance().deleteVelo(categories.getId_categorie());
+//                AnnonceService.getInstance().deleteAnnonce(annonce.getId_categorie());
 //                
 //                // Remove the velo from the container
-//                annonceContainer.removeComponent(categorieRow);
+//                annonceContainer.removeComponent(annonceRow);
 //            });
 //            
 //            // Add the labels to the velo row
@@ -69,23 +73,23 @@ public class ListAnnonceForm extends Form {
 //            labelsContainer.add(nomLabel);
 //
 //            
-//            categorieRow.add(BorderLayout.CENTER, labelsContainer);
+//            annonceRow.add(BorderLayout.CENTER, labelsContainer);
 //            
 //            // Create a container to hold the buttons
 //            Container buttonsContainer = new Container(new GridLayout(3, 1));
-//            buttonsContainer.setUIID("categorieButtonBox");
-//            buttonsContainer.add(reserveBtn);
+//            buttonsContainer.setUIID("annonceButtonBox");
+//           // buttonsContainer.add(reserveBtn);
 ////            buttonsContainer.add(editBtn);
 //            buttonsContainer.add(deleteBtn);
 //            
-//            categorieRow.add(BorderLayout.EAST, buttonsContainer);
+//            annonceRow.add(BorderLayout.EAST, buttonsContainer);
 //            
 //            // Add the velo row to the container
-//            categorieContainer.add(categorieRow);
+//            annonceContainer.add(annonceRow);
 //        }
 //        
 //        // Add the container to the form
-//        add(categorieContainer);
+//        add(annonceContainer);
 //        
 //        // Add a button to add a new velo
 //        Button addBtn = new Button("Add");
@@ -101,5 +105,5 @@ public class ListAnnonceForm extends Form {
 //        add(addBtn);
 //        add(editBtn);
 //    }
-    
+//    
 }

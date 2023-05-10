@@ -50,17 +50,15 @@ public class ListCategorieForm extends Form {
 ////                CategorieService.getInstance().addVelo(categories);
 ////          
 //            });
-//            Button editBtn = new Button("Edit");
-//            editBtn.addActionListener(e -> {
-//                //new EditCategorieForm(categories).show();
-//            });
+            Button btnUpdate = new Button("Modifier");
+            int idc=categories.getId_categorie();
+        btnUpdate.addActionListener(e-> new UpdateForm(this, idc).show()); 
+        
             Button deleteBtn = new Button("Delete");
             deleteBtn.addActionListener(e -> {
                 // Delete the velo from the server
                 CategorieService.getInstance().deleteVelo(categories.getId_categorie());
-                
-                // Remove the velo from the container
-                categorieContainer.removeComponent(categorieRow);
+                 new ListCategorieForm(this).show();
             });
             
             // Add the labels to the velo row
@@ -74,8 +72,8 @@ public class ListCategorieForm extends Form {
             Container buttonsContainer = new Container(new GridLayout(3, 1));
             buttonsContainer.setUIID("categorieButtonBox");
           //  buttonsContainer.add(reserveBtn);
-//            buttonsContainer.add(editBtn);
-            buttonsContainer.add(deleteBtn);
+         buttonsContainer.add(btnUpdate);
+        buttonsContainer.add(deleteBtn);
             
             categorieRow.add(BorderLayout.EAST, buttonsContainer);
             
@@ -88,7 +86,7 @@ public class ListCategorieForm extends Form {
         
         // Add a button to add a new velo
         Button addBtn = new Button("Add");
-        Button editBtn = new Button("Edit");
+        Button btnUpdate = new Button("Edit");
         addBtn.addActionListener(e -> {
             new AddCategorieForm().show();
         });
@@ -98,7 +96,7 @@ public class ListCategorieForm extends Form {
 //        });
         
         add(addBtn);
-        add(editBtn);
+        add(btnUpdate);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
 

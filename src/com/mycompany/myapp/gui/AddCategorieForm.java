@@ -65,7 +65,7 @@ public AddCategorieForm () {
      
   
         add(addBtn);
-       // getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+     
     }
 
   

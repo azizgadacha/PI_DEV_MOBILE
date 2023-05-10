@@ -70,6 +70,8 @@ public class CategorieService {
         }
         return categorie;
     }
+    
+    
 
 
     public ArrayList<categorie> getAllcategories() {
@@ -114,6 +116,49 @@ public class CategorieService {
         return resultOK;
     }
     
+    
+public categorie parsecat(String jsonText) {
+    categorie c = new categorie();
+    try {
+        JSONParser j = new JSONParser();
+        Map<String, Object> categorieJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+
+        if (categorieJson.get("idCategorie") != null) {
+            float id = Float.parseFloat(categorieJson.get("idCategorie").toString());
+            c.setId_categorie((int) id);
+        }
+
+        if (categorieJson.get("nomCategorie") != null) {
+            c.setNom_categorie(categorieJson.get("nomCategorie").toString());
+        }
+
+      
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return c;
+}
+    
+     public boolean UpdateCategorie(categorie c){
+         int id_categorie = c.getId_categorie();
+         String nom_categorie = c.getNom_categorie();
+          String url = Statics.Update_Categorie +id_categorie +"?nomCategorie=" + nom_categorie;
+          ConnectionRequest req = new ConnectionRequest();
+          req.setUrl(url);
+          req.setPost(true);
+          req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+
+            }
+        });
+            NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+          
+     }
+   
 //    public boolean editVelo(categorie c) {
 //
 //        String url = Statics.BASE_URL + "/api/edit?id="+ u.getId()+ "&email=" + u.getEmail()+ "&password=" + u.getPassword()+"&username=" + u.getUsername()+ "&age=" + u.getAge()+ "&address=" + u.getAddress(); //création de l'URL
@@ -132,17 +177,34 @@ public class CategorieService {
 //        return resultOK;
 //    }
 
+
     public void deleteVelo(int id_categorie) {
 
         Dialog d = new Dialog();
         if (d.show("Delete categorie", "Do you really want to remove this Categorie", "Yes", "No")) {
 
-            req.setUrl(Statics.BASE_URL + "/categorie/delete_json/id_categorie" + id_categorie);
+            req.setUrl(Statics.BASE_URL + "/categorie/delete_json/" + id_categorie);
 
             NetworkManager.getInstance().addToQueueAndWait(req);
         d.dispose();
     }
 }
+  public categorie getCategoryById(int id_categorie) {
+    String url = Statics.Show_Categorie + id_categorie;
+    req.setUrl(url);
+    req.setPost(false);
+    final categorie[] categorie = {null}; 
+    req.addResponseListener(new ActionListener<NetworkEvent>() {
+        @Override
+        public void actionPerformed(NetworkEvent evt) {
+            categorie[0] = parsecat(new String(req.getResponseData())); 
+            req.removeResponseListener(this);
+        }
+    });
+    NetworkManager.getInstance().addToQueueAndWait(req);
+    return categorie[0]; 
+}  
+    
 //
 //  public categorie getCategoryById(int id_categorie) {
 //    categorie cat = null;
