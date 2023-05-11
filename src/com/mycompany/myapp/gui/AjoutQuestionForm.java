@@ -1,5 +1,5 @@
 
-package com.mycompany.gui;
+package com.mycompany.myapp.gui;
 
 
 import com.codename1.components.InfiniteProgress;
@@ -25,8 +25,9 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
-import com.mycompany.entities.Question;
-import com.mycompany.services.ServiceQuestion;
+import com.mycompany.myapp.entities.Question;
+import com.mycompany.myapp.entities.ServiceQuestion;
+import com.mycompany.myapp.gui.ListeQuestionsForm;
 
 
 public class AjoutQuestionForm extends Form {

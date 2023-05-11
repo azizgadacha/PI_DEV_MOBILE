@@ -1,4 +1,4 @@
-package com.mycompany.gui;
+package com.mycompany.myapp.gui;
 
 
 //CODE TEMPLATE :

@@ -71,8 +71,8 @@ import com.mycompany.myapp.entities.ServiceQuestion;
         g.setAntiAliased(true);
         g.fillArc(0, 0, size, size, 0, 360);
         RadioButton[] rbs = new RadioButton[swipe.getTabCount()];
-       // FlowLayout flow = new FlowLayout(CENTER);
-        //flow.setValign(BOTTOM);
+        FlowLayout flow = new FlowLayout(CENTER);
+        flow.setValign(BOTTOM);
         Container radioContainer = new Container(flow);
         for (int iter = 0; iter < rbs.length; iter++) {
             rbs[iter] = RadioButton.createToggle(unselectedWalkthru, bg);

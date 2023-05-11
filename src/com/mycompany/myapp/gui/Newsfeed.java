@@ -20,7 +20,7 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
 
-package com.mycompany.gui;
+package com.mycompany.myapp.gui;
 
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;

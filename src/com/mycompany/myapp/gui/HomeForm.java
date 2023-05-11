@@ -20,16 +20,22 @@ import com.codename1.ui.Toolbar;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.Border;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.plaf.UIManager;
+import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.CandidatureListForm;
 import com.mycompany.myapp.RendezVousListForm;
+import com.mycompany.myapp.gui.User.ListUtilisateurs;
 
 /**
  *
  * @author Hend
  */
 public class HomeForm extends Form {
+        private Resources theme;
+
+     //   theme = UIManager.initFirstTheme("/theme");
     
-    public HomeForm() {
+    public HomeForm( Resources res) {
         super("Match Talent");
         
         Toolbar.setGlobalToolbar(true);
@@ -45,9 +51,15 @@ public class HomeForm extends Form {
     getToolbar().addCommandToLeftSideMenu("list categories", null, e->
             
             new ListCategorieForm(this).show()); 
+    getToolbar().addCommandToLeftSideMenu("list User", null, e->
+            
+            new ListUtilisateurs( res).show()); 
     getToolbar().addCommandToLeftSideMenu("Candidature", null, e-> {
             CandidatureListForm form =  new CandidatureListForm( this) ;
        form. show();});
+    getToolbar().addCommandToLeftSideMenu("Question", null, e-> {
+               new AjoutQuestionForm(theme).show();   
+});
         getToolbar().addCommandToLeftSideMenu("Add categories", null, e-> new AddCategorieForm().show());
         getToolbar().addCommandToLeftSideMenu("Liste Rendez vous", null, e->{
             RendezVousListForm form =  new RendezVousListForm( this) ;

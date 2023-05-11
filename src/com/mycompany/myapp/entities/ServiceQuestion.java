@@ -2,16 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.services;
+package com.mycompany.myapp.entities;
 
-import com.mycompany.entities.Question;
-import com.mycompany.utils.Statics;
+
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
+import com.mycompany.myapp.entities.Question;
+import com.mycompany.myapp.utils.Statics;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
