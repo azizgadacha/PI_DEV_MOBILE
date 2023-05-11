@@ -40,6 +40,7 @@ public class HomeForm extends Form {
         getToolbar().addCommandToLeftSideMenu("Add Reclamation", null, e-> new AddReclamationForm(this).show());
         getToolbar().addCommandToLeftSideMenu("List Of Responses", null, e->  new ListReponse(this).show());   
         getToolbar().addCommandToLeftSideMenu("Reply", null, e-> new AddReponseForm(this).show());
+        getToolbar().addCommandToLeftSideMenu("Statistics", null, e-> new StatisticsForm(this).show());
     }
 }
 

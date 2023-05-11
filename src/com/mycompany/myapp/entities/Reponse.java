@@ -18,6 +18,11 @@ public class Reponse {
 
     public Reponse() {
     }
+    
+    public Reponse(int id_reponse, String reponse) {
+        this.id_reponse = id_reponse;
+        this.reponse = reponse;
+    }
 
     public Reponse(Reclamation Reclamation, int id_reponse, int id_reclamation, String reponse, Date date) {
         this.Reclamation = Reclamation;

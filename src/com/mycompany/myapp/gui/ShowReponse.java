@@ -49,9 +49,10 @@ public class ShowReponse extends Form {
         Form showReponse = new ShowReponse(previous, reponse);
         showReponse.show();
     } else {
-        Dialog.show("Error", "Unable to retrieve reponse for this reclamation", "OK", null);
+        Dialog.show("Error", "There is no response for this reclamation", "OK", null);
     }
 }
+
 
 }
 

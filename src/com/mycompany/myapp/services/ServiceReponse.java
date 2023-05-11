@@ -11,6 +11,7 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
+import com.codename1.ui.Label;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.Reclamation;
 import com.mycompany.myapp.entities.Reponse;
@@ -48,7 +49,7 @@ public class ServiceReponse {
    public boolean addReponse(Reponse t) {
     String reponse = t.getReponse();
     String url = Base.BASE_URL + "post_reponse?reponse=" + reponse;
-    url += "&id_reclamation=24"; 
+    url += "&id_reclamation=23"; 
 
     req.setUrl(url);
     req.setPost(false);
@@ -74,7 +75,7 @@ public class ServiceReponse {
         List<Map<String, Object>> list = (List<Map<String, Object>>) reponsesListJson.get("root");
         for (Map<String, Object> obj : list) {
             Reponse t = new Reponse();
-            Object idObj = obj.get("id");
+            Object idObj = obj.get("idReponse");
             if (idObj != null) {
                 float id = Float.parseFloat(idObj.toString());
                 t.setId_reponse((int) id);
@@ -108,7 +109,7 @@ public class ServiceReponse {
     
    public boolean deleteReponse(int id_reponse) throws IOException {
     String url = Base.BASE_URL + "delete_reponse/";
-    url += "2"; 
+    url += "47"; 
     req.setUrl(url);
     req.setPost(false);
     req.setHttpMethod("DELETE");
@@ -123,38 +124,119 @@ public class ServiceReponse {
 }
 
 public void delete_reponse(int id_reponse) {
-    try {
-        boolean success = deleteReponse(id_reponse);
-        if (success) {
-            Dialog.show("Success","Response deleted successfully",new Command("OK"));
-        } else {
-            Dialog.show("Error","Unable to delete response",new Command("OK"));
+    //try {
+        //boolean success = deleteReponse(id_reponse);
+        //if (success) {
+           // Dialog.show("Success","Response deleted successfully",new Command("OK"));
+        //} else {
+            //Dialog.show("Error","Unable to delete response",new Command("OK"));
         }
+    //} catch (IOException ex) {
+       // Dialog.show("Error","Unable to delete response",new Command("OK"));
+    //}
+ 
+ public Reponse parsecat(String jsonText) {
+    Reponse c = new Reponse();
+    try {
+        JSONParser j = new JSONParser();
+        Map<String, Object> reponseJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+
+        if (reponseJson.get("idReponse") != null) {
+            float id = Float.parseFloat(reponseJson.get("idReponse").toString());
+            c.setId_reponse((int) id);
+        }
+
+        if (reponseJson.get("nomReponse") != null) {
+            c.setReponse(reponseJson.get("nomReponse").toString());
+        }
+
+      
     } catch (IOException ex) {
-        Dialog.show("Error","Unable to delete response",new Command("OK"));
+        System.out.println(ex.getMessage());
     }
+    return c;
 }
 
-    
-    public ArrayList<Reponse> getReponse(int id_reclamation) {
+   public void deleteVelo(int id_reponse) {
+
+        Dialog d = new Dialog();
+        if (d.show("Delete Reponse", "Do you really want to remove this Reponse", "Yes", "No")) {
+
+            req.setUrl(Base.BASE_URL + "delete_reponse/" + id_reponse);
+
+            NetworkManager.getInstance().addToQueueAndWait(req);
+        d.dispose();
+    }
+   }
+private ArrayList<Reponse> parseReponse(String jsonText) {
+    ArrayList<Reponse> reponses = new ArrayList<>();
+    try {
+        JSONParser j = new JSONParser();
+        Object obj = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+        if (obj instanceof Map) {
+            Map<String, Object> reponsesListJson = (Map<String, Object>) obj;
+            if (reponsesListJson.containsKey("root")) {
+                Object rootObj = reponsesListJson.get("root");
+                if (rootObj instanceof List) {
+                    List<Map<String, Object>> list = (List<Map<String, Object>>) rootObj;
+                    for (Map<String, Object> r : list) {
+                        Reponse reponse = new Reponse();
+                        Object idObj = r.get("idReponse");
+                        if (idObj != null) {
+                            int id = Integer.parseInt(idObj.toString());
+                            reponse.setId_reponse(id);
+                        }
+                        reponse.setReponse(r.get("reponse") != null ? r.get("reponse").toString() : null);
+                        Object mediaObj = r.get("media");
+                        if (mediaObj instanceof Map) {
+                            Map<String, Object> mediaMap = (Map<String, Object>) mediaObj;
+                            String url = (String) mediaMap.get("url");
+                            String type = (String) mediaMap.get("type");
+                            
+                        }
+                        reponses.add(reponse);
+                    }
+                } else {
+                    System.out.println("Error parsing JSON string: root is not a list");
+                }
+            } else {
+                System.out.println("Error parsing JSON string: root key not found");
+            }
+        } else {
+            System.out.println("Error parsing JSON string: not a map");
+        }
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    } catch (NumberFormatException ex) {
+        System.out.println("Error parsing integer: " + ex.getMessage());
+    } catch (ClassCastException ex) {
+        System.out.println("Error casting object: " + ex.getMessage());
+    }
+    return reponses;
+}
+
+
+
+public Reponse getReponse(int id_reclamation) {
     String url = Base.BASE_URL + "showFromRec_reponse/" + id_reclamation;
     req.setUrl(url);
     req.setPost(false);
+    final Reponse[] reponse = {null};
     req.addResponseListener(new ActionListener<NetworkEvent>() {
         @Override
         public void actionPerformed(NetworkEvent evt) {
-            String response = new String(req.getResponseData());
-            if (response.equals("Response deleted successfully.")) {
-                // Handle the case where there is no response for the given reclamation
-                reponses = new ArrayList<>();
-            } else {
-                reponses = parseReponses(response);
+            reponses = parseReponse(new String(req.getResponseData()));
+            if (!reponses.isEmpty()) {
+                reponse[0] = reponses.get(0);
             }
             req.removeResponseListener(this);
         }
     });
     NetworkManager.getInstance().addToQueueAndWait(req);
-    return reponses;
+    return reponse[0];
 }
 
+
 }
+
+
