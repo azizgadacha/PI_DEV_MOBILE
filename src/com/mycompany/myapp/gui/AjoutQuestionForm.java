@@ -107,7 +107,7 @@ addStringValue("ID Bonne réponse", idBonnereponse);
             
             try {
                 
-                if(question.getText().equals("") || idBonnereponse.getText().equals("")) {
+                if ((question.getText().length() == 0) || (propositiona.getText().length() == 0) || (propositionb.getText().length() == 0) || (propositionc.getText().length() == 0) || (!idBonnereponse.getText().equals("A") && !idBonnereponse.getText().equals("B") && !idBonnereponse.getText().equals("C"))) {
                     Dialog.show("Veuillez vérifier les données","","Annuler", "OK");
                 }
                 

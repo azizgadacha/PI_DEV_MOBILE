@@ -21,7 +21,7 @@ import com.mycompany.myapp.entities.categorie;
  */
 public class AddCategorieForm extends Form {
       
-public AddCategorieForm () {
+public AddCategorieForm (Form previous) {
         super("Add categorie");
         
   
@@ -50,7 +50,8 @@ public AddCategorieForm () {
 
                 // Add the categorie to the server
                 CategorieService.getInstance().addVelo(categorie);
-                new AddCategorieForm().show();
+                 new ListCategorieForm(previous).show(); 
+                //new AddCategorieForm().show();
 
                 // Close the form
                // this.close();

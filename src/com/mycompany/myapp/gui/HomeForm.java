@@ -24,6 +24,7 @@ import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.CandidatureListForm;
 import com.mycompany.myapp.RendezVousListForm;
+import com.mycompany.myapp.UserListForm1;
 import com.mycompany.myapp.gui.User.ListUtilisateurs;
 
 /**
@@ -53,7 +54,9 @@ public class HomeForm extends Form {
             new ListCategorieForm(this).show()); 
     getToolbar().addCommandToLeftSideMenu("list User", null, e->
             
-            new ListUtilisateurs( res).show());  
+           // new ListUtilisateurs( res).show()
+    new UserListForm1(this).show()
+    );  
     getToolbar().addCommandToLeftSideMenu("list Question", null, e->
             
             
@@ -73,7 +76,7 @@ public class HomeForm extends Form {
     getToolbar().addCommandToLeftSideMenu("Question", null, e-> {
                new AjoutQuestionForm(theme).show();   
 });
-        getToolbar().addCommandToLeftSideMenu("Add categories", null, e-> new AddCategorieForm().show());
+        getToolbar().addCommandToLeftSideMenu("Add categories", null, e-> new AddCategorieForm(this).show());
         getToolbar().addCommandToLeftSideMenu("Liste Rendez vous", null, e->{
             RendezVousListForm form =  new RendezVousListForm( this) ;
        form. show();

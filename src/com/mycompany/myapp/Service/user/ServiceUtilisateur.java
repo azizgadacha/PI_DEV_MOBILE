@@ -93,14 +93,11 @@ public class ServiceUtilisateur {
                                 SessionManager.setPhoto(obj.get("photo").toString());
                                 }
                             
-                                if(SessionManager.getUserName().equals("aziz.gadacha@esprit.tn")&& SessionManager.getPass().equals("testtest")) {
-                                    new ListUtilisateurs(res).show();
-                                }
-                                else if(user.size()>0 ) {
+                          
                                            
 
         new HomeForm(res).show();
-                            }}
+                            }
                             
                             }
                             
@@ -123,7 +120,7 @@ public class ServiceUtilisateur {
      {
         ArrayList<Utilisateur> listUsers = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-                con.setUrl("http://localhost:8000/alluser");
+                con.setUrl("http://localhost:8000/mobilealluser");
 
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -138,21 +135,15 @@ public class ServiceUtilisateur {
 
                     for (Map<String, Object> obj : listOfMaps) {
                         Utilisateur user = new Utilisateur();
-                        float id = Float.parseFloat(obj.get("id").toString());
+                        float id = Float.parseFloat(obj.get("tid").toString());
                     //    float idAuteur = Float.parseFloat(obj.get("id_auteur").toString());
                         String name = obj.get("name").toString();      
-                        String contact = obj.get("contact").toString();
 
                         String email=obj.get("email").toString();
 
-                        ArrayList<String> rolesList=new ArrayList<>();
-                        rolesList.add(obj.get("roles").toString());
-                           String image = obj.get("photo").toString();
-                        user.setId((int) id);
                       user.setUsername(name);
                         user.setEmail(email);                        
-                        user.setContact(contact);
-
+user.setId((int)id);
                         
                         listUsers.add(user);
 
@@ -252,7 +243,7 @@ public class ServiceUtilisateur {
       
     //Delete 
     public boolean deleteUser(int id ) {
-        String url = "http://localhost:8000/delete?id="+id;
+        String url = "http://localhost:8000/mobiledelete?id="+id;
         
         req.setUrl(url);
         

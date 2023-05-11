@@ -90,7 +90,7 @@ categorieContainer.repaint();
         Button addBtn = new Button("Add");
         Button btnUpdate = new Button("Edit");
         addBtn.addActionListener(e -> {
-            new AddCategorieForm().show();
+            new AddCategorieForm(previous).show();
         });
         
 //        avisBtn.addActionListener(e -> {

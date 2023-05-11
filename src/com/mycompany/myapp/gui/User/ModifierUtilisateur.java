@@ -34,9 +34,7 @@ public class ModifierUtilisateur extends BaseForm {
     public ModifierUtilisateur(Resources res , Utilisateur r) {
          super("Newsfeed",BoxLayout.y()); //herigate men Newsfeed w l formulaire vertical
     
-        Toolbar tb = new Toolbar(true);
-        current = this ;
-        setToolbar(tb);
+     
         getTitleArea().setUIID("Container");
         setTitle("Ajout Reclamation");
         getContentPane().setScrollVisible(false);
