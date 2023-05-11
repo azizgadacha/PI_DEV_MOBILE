@@ -27,9 +27,11 @@ public class ShowReponse extends Form {
     private final Reponse reponse;
 
     public ShowReponse(Form previous, Reponse reponse) {
+                
         this.reponse = reponse;
         setTitle("Reponse Details");
         setLayout(new BorderLayout());
+        System.out.println("gfdgfd"+reponse.getId_reclamation());
 
         TextArea reponseTextArea = new TextArea(reponse.getReponse());
         reponseTextArea.setEditable(false);

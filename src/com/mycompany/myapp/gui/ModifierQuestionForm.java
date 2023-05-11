@@ -1,4 +1,3 @@
-
 package com.mycompany.myapp.gui;
 import com.codename1.components.FloatingHint;
 import com.codename1.ui.Button;
@@ -16,8 +15,7 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.mycompany.myapp.entities.Question;
-import com.mycompany.myapp.entities.ServiceQuestion;
-import com.mycompany.myapp.gui.ListeQuestionsForm;
+import com.mycompany.myapp.Service.ServiceQuestion;
 
 
 
@@ -66,14 +64,14 @@ public class ModifierQuestionForm extends BaseForm {
         btnModifier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if ((question.getText().length() == 0) || (propositiona.getText().length() == 0) || (propositionb.getText().length() == 0) || (propositionc.getText().length() == 0) || (idBonnereponse.getText().length() == 0)) {
+                if ((question.getText().length() == 0) || (propositiona.getText().length() == 0) || (propositionb.getText().length() == 0) || (propositionc.getText().length() == 0) || (!idBonnereponse.getText().equals("A") && !idBonnereponse.getText().equals("B") && !idBonnereponse.getText().equals("C"))) {
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 } else {
                     try {
-                        Question Questionupdated = new Question(question.getText(), propositiona.getText(), propositionb.getText(), propositionc.getText(), idBonnereponse.getText());
+                        Question Questionupdated = new Question(r.getIdQuestion(),question.getText(), propositiona.getText(), propositionb.getText(), propositionc.getText(), idBonnereponse.getText());
 
                         if (ServiceQuestion.getInstance().modifierQuestion(Questionupdated)) {
-                            Dialog.show("Success", "Connection accepted", new Command("OK"));
+                            Dialog.show("Success", "question modifié", new Command("OK"));
                             //new ModifierQuestionForm(ListeQuestionsForm(res),reclamationupdated).show();
                             new ListeQuestionsForm(res).show();
 

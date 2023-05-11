@@ -53,10 +53,23 @@ public class HomeForm extends Form {
             new ListCategorieForm(this).show()); 
     getToolbar().addCommandToLeftSideMenu("list User", null, e->
             
-            new ListUtilisateurs( res).show()); 
+            new ListUtilisateurs( res).show());  
+    getToolbar().addCommandToLeftSideMenu("list Question", null, e->
+            
+            
+               new ListeQuestionsForm(theme).show()); 
+    getToolbar().addCommandToLeftSideMenu("add Question", null, e->
+            
+            
+               new AjoutQuestionForm(theme).show()); 
     getToolbar().addCommandToLeftSideMenu("Candidature", null, e-> {
             CandidatureListForm form =  new CandidatureListForm( this) ;
        form. show();});
+    
+           
+
+    
+    
     getToolbar().addCommandToLeftSideMenu("Question", null, e-> {
                new AjoutQuestionForm(theme).show();   
 });

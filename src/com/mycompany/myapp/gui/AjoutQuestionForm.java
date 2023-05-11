@@ -27,7 +27,7 @@ import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.entities.Question;
 import com.mycompany.myapp.entities.ServiceQuestion;
-import com.mycompany.myapp.gui.ListeQuestionsForm;
+
 
 
 public class AjoutQuestionForm extends Form {
@@ -49,7 +49,6 @@ public class AjoutQuestionForm extends Form {
         Label s1 = new Label();
         Label s2 = new Label();
         
-        addTab(swipe,s1, res.getImage("logo.png"),"","",res);
                 
         swipe.setUIID("Container");
         swipe.getContentPane().setUIID("Container");
@@ -72,19 +71,7 @@ public class AjoutQuestionForm extends Form {
         FlowLayout flow = new FlowLayout(CENTER);
         flow.setValign(BOTTOM);
         Container radioContainer = new Container(flow);
-        for (int iter = 0; iter < rbs.length; iter++) {
-            rbs[iter] = RadioButton.createToggle(unselectedWalkthru, bg);
-            rbs[iter].setPressedIcon(selectedWalkthru);
-            rbs[iter].setUIID("Label");
-            radioContainer.add(rbs[iter]);
-        }
-
-        rbs[0].setSelected(true);
-        swipe.addSelectionListener((i, ii) -> {
-            if (!rbs[ii].isSelected()) {
-                rbs[ii].setSelected(true);
-            }
-        });
+       
 
         Component.setSameSize(radioContainer, s1, s2);
         add(LayeredLayout.encloseIn(swipe, radioContainer));

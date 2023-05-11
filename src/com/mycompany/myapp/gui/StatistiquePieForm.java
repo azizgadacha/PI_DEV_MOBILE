@@ -47,7 +47,6 @@ import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
-import com.mycompany.myapp.gui.ListeQuestionsForm;
 
 import java.util.ArrayList;
 import java.util.List;

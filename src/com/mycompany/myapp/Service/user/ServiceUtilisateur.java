@@ -64,7 +64,7 @@ public class ServiceUtilisateur {
                      try {
             
                             JSONParser j = new JSONParser();
-                            String json = new String(req.getResponseData()) + "";
+                            String json = new String(req.getResponseData()) ;
                             if (json.equals("failed")){
 
                                 Dialog.show("Echec d'authenfication", "username ou mot de passe éronné", "Ok", null);
