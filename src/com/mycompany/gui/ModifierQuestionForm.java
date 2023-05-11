@@ -69,7 +69,7 @@ public class ModifierQuestionForm extends BaseForm {
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 } else {
                     try {
-                        Question Questionupdated = new Question(question.getText(), propositiona.getText(), propositionb.getText(), propositionc.getText(), idBonnereponse.getText());
+                        Question Questionupdated = new Question(r.getIdQuestion(),question.getText(), propositiona.getText(), propositionb.getText(), propositionc.getText(), idBonnereponse.getText());
 
                         if (ServiceQuestion.getInstance().modifierQuestion(Questionupdated)) {
                             Dialog.show("Success", "Connection accepted", new Command("OK"));

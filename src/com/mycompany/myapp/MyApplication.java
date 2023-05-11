@@ -46,11 +46,12 @@ public class MyApplication {
             current.show();
             return;
         }
-       // Question rec = new Question();
-     new AjoutQuestionForm(theme).show();   
+        Question rec = new Question();
+        //new AjoutQuestionForm(theme).show(); 
+        new ListeQuestionsForm(theme).show();
 
-      //Question rec = new Question("malik","feriel","07/05/2023","on hold","07/05/2023");
-      //new ModifierQuestionForm(theme,rec).show();
+        //Question rec = new Question("malik","feriel","07/05/2023","on hold","07/05/2023");
+         //new ModifierQuestionForm(theme,rec).show();
 
     }
 

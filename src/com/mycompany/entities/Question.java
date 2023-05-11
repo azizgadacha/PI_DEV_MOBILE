@@ -27,6 +27,17 @@ public class Question {
         this.id_quiz = id_quiz;
     }
 
+    public Question(int idQuestion, String question, String propositiona, String propositionb, String propositionc, String idBonnereponse) {
+        this.idQuestion = idQuestion;
+        this.question = question;
+        this.propositiona = propositiona;
+        this.propositionb = propositionb;
+        this.propositionc = propositionc;
+        this.idBonnereponse = idBonnereponse;
+    }
+    
+    
+
     public Question() {
     }
 

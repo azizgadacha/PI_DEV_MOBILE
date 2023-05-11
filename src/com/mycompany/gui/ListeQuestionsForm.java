@@ -33,26 +33,26 @@ import com.codename1.ui.EncodedImage;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.GridLayout;
 
+public class ListeQuestionsForm extends BaseForm {
 
- public class ListeQuestionsForm extends BaseForm {
-     Form current;
-    public ListeQuestionsForm(Resources res ) {
-          super("Newsfeed",BoxLayout.y()); //herigate men Newsfeed w l formulaire vertical
+    Form current;
+
+    public ListeQuestionsForm(Resources res) {
+        super("Newsfeed", BoxLayout.y()); //herigate men Newsfeed w l formulaire vertical
         Toolbar tb = new Toolbar(true);
-        current = this ;
+        current = this;
         setToolbar(tb);
         getTitleArea().setUIID("Container");
         setTitle("Liste Questions");
         getContentPane().setScrollVisible(false);
- 
-        
+
         Tabs swipe = new Tabs();
-        
+
         Label s1 = new Label();
         Label s2 = new Label();
-        
-        addTab(swipe,s1, res.getImage("logo.png"),"","",res);
-  
+
+        addTab(swipe, s1, res.getImage("logo.png"), "", "", res);
+
         swipe.setUIID("Container");
         swipe.getContentPane().setUIID("Container");
         swipe.hideTabs();
@@ -94,20 +94,19 @@ import com.codename1.ui.layouts.GridLayout;
         ButtonGroup barGroup = new ButtonGroup();
         RadioButton mesListes = RadioButton.createToggle("Refresh", barGroup);
         mesListes.setUIID("SelectBar");
-        
+
         RadioButton stats = RadioButton.createToggle("stats", barGroup);
         stats.setUIID("SelectBar");
-        
+
         RadioButton ajouter = RadioButton.createToggle("Ajouter", barGroup);
         ajouter.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
-
         mesListes.addActionListener((e) -> {
-               InfiniteProgress ip = new InfiniteProgress();
-        final Dialog ipDlg = ip.showInifiniteBlocking();
-        
-         ListeQuestionsForm a = new ListeQuestionsForm(res);
+            InfiniteProgress ip = new InfiniteProgress();
+            final Dialog ipDlg = ip.showInifiniteBlocking();
+
+            ListeQuestionsForm a = new ListeQuestionsForm(res);
             a.show();
         });
 
@@ -116,159 +115,163 @@ import com.codename1.ui.layouts.GridLayout;
                 FlowLayout.encloseBottom(arrow)
         ));
 
-       ajouter.addActionListener((e) -> {
-               
-                new AjoutQuestionForm(res).show();   
-       });
+        ajouter.addActionListener((e) -> {
+
+            new AjoutQuestionForm(res).show();
+        });
         stats.addActionListener((e) -> {
-               
-                new StatistiquePieForm(res).show();   
-       });
+
+            new StatistiquePieForm(res).show();
+        });
         bindButtonSelection(mesListes, arrow);
         bindButtonSelection(stats, arrow);
         bindButtonSelection(ajouter, arrow);
-        
-      
+
         //Appel affichage methode
-        ArrayList<Question>list = ServiceQuestion.getInstance().affichageQuestions();
-        System.out.println("hrlllo"+list.size());
-        System.out.println("hffffrlllo"+list.get(0).getPropositiona());
-        for(Question Q : list ) {
-             String urlImage ="logo.png";//image statique pour le moment ba3d taw fi  videos jayin nwarikom image 
-            
-             Image placeHolder = Image.createImage(120, 90);
-             EncodedImage enc =  EncodedImage.createFromImage(placeHolder,false);
-             URLImage urlim = URLImage.createToStorage(enc, urlImage, urlImage, URLImage.RESIZE_SCALE);
-             
-                addButton(urlim,Q,res);
-        
-                ScaleImageLabel image = new ScaleImageLabel(urlim);
-                
-                Container containerImg = new Container();
-                
-                image.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
+        ArrayList<Question> list = ServiceQuestion.getInstance().affichageQuestions();
+        System.out.println("hrlllo" + list.size());
+        System.out.println("hffffrlllo" + list.get(0).getPropositiona());
+        for (Question Q : list) {
+            String urlImage = "logo.png";//image statique pour le moment ba3d taw fi  videos jayin nwarikom image 
+
+            Image placeHolder = Image.createImage(120, 90);
+            EncodedImage enc = EncodedImage.createFromImage(placeHolder, false);
+            URLImage urlim = URLImage.createToStorage(enc, urlImage, urlImage, URLImage.RESIZE_SCALE);
+
+            addButton(urlim, Q, res);
+
+            ScaleImageLabel image = new ScaleImageLabel(urlim);
+
+            Container containerImg = new Container();
+
+            image.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
         }
-        
-        
-        
+
     }
-    
-       private void addTab(Tabs swipe, Label spacer , Image image, String string, String text, Resources res) {
+
+    private void addTab(Tabs swipe, Label spacer, Image image, String string, String text, Resources res) {
         int size = Math.min(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight());
-        
-        if(image.getHeight() < size) {
+
+        if (image.getHeight() < size) {
             image = image.scaledHeight(size);
         }
-        
-        
-        
-        if(image.getHeight() > Display.getInstance().getDisplayHeight() / 2 ) {
+
+        if (image.getHeight() > Display.getInstance().getDisplayHeight() / 2) {
             image = image.scaledHeight(Display.getInstance().getDisplayHeight() / 2);
         }
-        
+
         ScaleImageLabel imageScale = new ScaleImageLabel(image);
         imageScale.setUIID("Container");
         imageScale.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
-        
-        Label overLay = new Label("","ImageOverlay");
-        
-        
-        Container page1 = 
-                LayeredLayout.encloseIn(
-                imageScale,
+
+        Label overLay = new Label("", "ImageOverlay");
+
+        Container page1
+                = LayeredLayout.encloseIn(
+                        imageScale,
                         overLay,
                         BorderLayout.south(
-                        BoxLayout.encloseY(
-                        new SpanLabel(text, "LargeWhiteText"),
+                                BoxLayout.encloseY(
+                                        new SpanLabel(text, "LargeWhiteText"),
                                         spacer
+                                )
                         )
-                    )
                 );
-        
-        swipe.addTab("",res.getImage("back-logo.jpeg"), page1);
-              
+
+        swipe.addTab("", res.getImage("back-logo.jpeg"), page1);
+
     }
-    public void bindButtonSelection(Button btn , Label l ) {
-        
-        btn.addActionListener(e-> {
-        if(btn.isSelected()) {
-            updateArrowPosition(btn,l);
-        }
-    });
+
+    public void bindButtonSelection(Button btn, Label l) {
+
+        btn.addActionListener(e -> {
+            if (btn.isSelected()) {
+                updateArrowPosition(btn, l);
+            }
+        });
     }
 
     private void updateArrowPosition(Button btn, Label l) {
-        
-        l.getUnselectedStyle().setMargin(LEFT, btn.getX() + btn.getWidth()  / 2  - l.getWidth() / 2 );
+
+        l.getUnselectedStyle().setMargin(LEFT, btn.getX() + btn.getWidth() / 2 - l.getWidth() / 2);
         l.getParent().repaint();
     }
 
-    private void addButton(Image img,Question Q , Resources res) {
-        
+    private void addButton(Image img, Question Q, Resources res) {
+
         int height = Display.getInstance().convertToPixels(11.5f);
         int width = Display.getInstance().convertToPixels(14f);
-        
 
         Container cnt = new Container();
         cnt.setLayout(new BorderLayout());
-       
-        Label QuestionTxt= new Label("question: "+Q.getQuestion(),"NewsTopLine2");
-        Label propostionaTxt= new Label("propostion A: "+Q.getPropositiona(),"NewsTopLine2");
-        Label propostionbTxt= new Label("propostion B: "+Q.getPropositionb(),"NewsTopLine2" );
-        Label propostioncTxt= new Label("propostion C: "+Q.getPropositionc(),"NewsTopLine2" );
-        Label BonnereponseTxt= new Label("Id bonne réponse: "+Q.getIdBonnereponse(),"NewsTopLine2" );
-        
-                
-                
+
+        Label QuestionTxt = new Label("question: " + Q.getQuestion(), "NewsTopLine2");
+        Label propostionaTxt = new Label("propostion A: " + Q.getPropositiona(), "NewsTopLine2");
+        Label propostionbTxt = new Label("propostion B: " + Q.getPropositionb(), "NewsTopLine2");
+        Label propostioncTxt = new Label("propostion C: " + Q.getPropositionc(), "NewsTopLine2");
+        Label BonnereponseTxt = new Label("Id bonne réponse: " + Q.getIdBonnereponse(), "NewsTopLine2");
+        Label espace = new Label("                    ");
+
         createLineSeparator();
-        
-         
+
         //supprimer button
-        Label lSupprimer = new Label(" ");
+        Button modif = new Button("modif");
+        modif.addActionListener(l -> {
+        new ModifierQuestionForm(res, Q).show();
+        
+        });
+        
+        
+        Button suprimer = new Button("spprimer");
+       Label lSupprimer = new Label();
         lSupprimer.setUIID("NewsTopLine");
         Style supprmierStyle = new Style(lSupprimer.getUnselectedStyle());
         supprmierStyle.setFgColor(0xf21f1f);
-        
+
         FontImage suprrimerImage = FontImage.createMaterial(FontImage.MATERIAL_DELETE, supprmierStyle);
         lSupprimer.setIcon(suprrimerImage);
         lSupprimer.setTextPosition(RIGHT);
+
+        
+                suprimer.addActionListener((e)  -> {
+                 ServiceQuestion.getInstance().deleteQuestion(Q);
+   
+                });
         
         //click delete icon
         lSupprimer.addPointerPressedListener(l -> {
-            
+
             Dialog dig = new Dialog("Suppression");
-            
-            if(dig.show("Suppression","Vous voulez supprimer cette question ?","Annuler","Oui")) {
+
+            if (dig.show("Suppression", "Vous voulez supprimer cette question ?", "Annuler", "Oui")) {
+                dig.dispose();
+            } else {
+                                System.out.println("azzzouzzz");
+ServiceQuestion.getInstance().deleteQuestion(Q);
                 dig.dispose();
             }
-            else {
-                dig.dispose();
-                 }
-                //n3ayto l suuprimer men service Question
-                if(ServiceQuestion.getInstance().deleteQuestion(Q)) {
-                  Dialog.show("Success", "Connection accepted", new Command("OK"));
-                  refresh();
-                    //new ListeQuestionsForm(res).show();
-                }
-           
+            //n3ayto l suuprimer men service Question
+         /*   if (ServiceQuestion.getInstance().deleteQuestion(Q)) {
+                Dialog.show("Success", "Connection accepted", new Command("OK"));
+                refresh();
+                //new ListeQuestionsForm(res).show();
+            }*/
+
         });
-          cnt.add(BorderLayout.CENTER,BoxLayout.encloseY(
-                
+        
+        cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(
                 BoxLayout.encloseX(QuestionTxt),
                 BoxLayout.encloseX(propostionaTxt),
                 BoxLayout.encloseX(propostionbTxt),
                 BoxLayout.encloseX(propostioncTxt),
-                BoxLayout.encloseX(BonnereponseTxt)
-          ));
-  
+                BoxLayout.encloseX(BonnereponseTxt),
+                BoxLayout.encloseX(suprimer),
+                                BoxLayout.encloseX(modif),
+
+                BoxLayout.encloseX(espace)
+        ));
+
         add(cnt);
     }
-      
-      
-  
 
- }
-
-
-  
-
+}
