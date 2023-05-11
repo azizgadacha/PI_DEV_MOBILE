@@ -64,8 +64,7 @@ public class ModifierQuestionForm extends BaseForm {
         btnModifier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if ((question.getText().length() == 0) || (propositiona.getText().length() == 0) || (propositionb.getText().length() == 0) || (propositionc.getText().length() == 0) || (!idBonnereponse.getText().equals("A") && !idBonnereponse.getText().equals("B") && !idBonnereponse.getText().equals("C"))) {
-                    Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
+if ((question.getText().length() == 0) || (propositiona.getText().length() == 0) || (propositionb.getText().length() == 0) || (propositionc.getText().length() == 0) || (!idBonnereponse.getText().equals("A") && !idBonnereponse.getText().equals("B") && !idBonnereponse.getText().equals("C"))) {                    Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 } else {
                     try {
                         Question Questionupdated = new Question(r.getIdQuestion(),question.getText(), propositiona.getText(), propositionb.getText(), propositionc.getText(), idBonnereponse.getText());
